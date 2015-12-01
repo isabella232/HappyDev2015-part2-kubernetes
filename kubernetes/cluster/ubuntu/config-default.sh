@@ -18,33 +18,33 @@
 
 # Define all your cluster nodes, MASTER node comes first"
 # And separated with blank space like <user_1@ip_1> <user_2@ip_2> <user_3@ip_3> 
-export nodes=${nodes:-"vcap@10.10.103.250 vcap@10.10.103.162 vcap@10.10.103.223"}
+export nodes=${nodes:-"root@192.168.100.94"}
 
 # Define all your nodes role: a(master) or i(minion) or ai(both master and minion), must be the order same 
-role=${role:-"ai i i"}
+role=${role:-"ai"}
 # If it practically impossible to set an array as an environment variable
 # from a script, so assume variable is a string then convert it to an array
 export roles=($role)
 
 # Define minion numbers
-export NUM_MINIONS=${NUM_MINIONS:-3}
+export NUM_MINIONS=${NUM_MINIONS:-1}
 # define the IP range used for service cluster IPs.
 # according to rfc 1918 ref: https://tools.ietf.org/html/rfc1918 choose a private ip range here.
-export SERVICE_CLUSTER_IP_RANGE=${SERVICE_CLUSTER_IP_RANGE:-192.168.3.0/24}  # formerly PORTAL_NET
+export SERVICE_CLUSTER_IP_RANGE=${SERVICE_CLUSTER_IP_RANGE:-192.168.101.0/24}  # formerly PORTAL_NET
 # define the IP range used for flannel overlay network, should not conflict with above SERVICE_CLUSTER_IP_RANGE
 export FLANNEL_NET=${FLANNEL_NET:-172.16.0.0/16}
 
 # Admission Controllers to invoke prior to persisting objects in cluster
 export ADMISSION_CONTROL=NamespaceLifecycle,LimitRanger,ServiceAccount,ResourceQuota,DenyEscalatingExec,SecurityContextDeny
 
-SERVICE_NODE_PORT_RANGE=${SERVICE_NODE_PORT_RANGE:-"30000-32767"}
+SERVICE_NODE_PORT_RANGE=${SERVICE_NODE_PORT_RANGE:-"0-32767"}
 
 # Optional: Enable node logging.
-ENABLE_NODE_LOGGING=false
+ENABLE_NODE_LOGGING=true
 LOGGING_DESTINATION=${LOGGING_DESTINATION:-elasticsearch}
 
 # Optional: When set to true, Elasticsearch and Kibana will be setup as part of the cluster bring up.
-ENABLE_CLUSTER_LOGGING=false
+ENABLE_CLUSTER_LOGGING=true
 ELASTICSEARCH_LOGGING_REPLICAS=${ELASTICSEARCH_LOGGING_REPLICAS:-1}
 
 # Optional: When set to true, heapster, Influxdb and Grafana will be setup as part of the cluster bring up.
@@ -57,8 +57,8 @@ DOCKER_OPTS=${DOCKER_OPTS:-""}
 # Optional: Install cluster DNS.
 ENABLE_CLUSTER_DNS="${KUBE_ENABLE_CLUSTER_DNS:-true}"
 # DNS_SERVER_IP must be a IP in SERVICE_CLUSTER_IP_RANGE
-DNS_SERVER_IP=${DNS_SERVER_IP:-"192.168.3.10"}
-DNS_DOMAIN=${DNS_DOMAIN:-"cluster.local"}
+DNS_SERVER_IP=${DNS_SERVER_IP:-"192.168.101.10"}
+DNS_DOMAIN=${DNS_DOMAIN:-"kube.cluster.local"}
 DNS_REPLICAS=${DNS_REPLICAS:-1}
 
 # Optional: Install Kubernetes UI

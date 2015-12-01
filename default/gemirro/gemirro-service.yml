@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  namespace: default
+  name: gemirro
+  labels:
+    name: gemirro
+
+spec:
+
+  ports:
+  - port: 80
+    name: http
+    targetPort: 2000
+
+  selector:
+    name: gemirro

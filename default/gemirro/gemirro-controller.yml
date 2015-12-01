@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ReplicationController
+
+metadata:
+  namespace: default
+  labels:
+    name: gemirro
+  name: gemirro
+
+spec:
+
+  replicas: 1
+  selector:
+    name: gemirro
+
+  template:
+    metadata:
+      name: gemirro
+      labels:
+        name: gemirro
+    spec:
+
+      containers:
+        - name: gemirro
+          image: "registry.default.kube.cluster.local/default/gemirro:latest"
+
+          ports:
+            - name: http
+              containerPort: 2000
+          env:

@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image: "registry.default.kube.ul.home/default/jenkins:latest"
+          image: "registry.default.kube.cluster.local/default/jenkins:latest"
 
           ports:
             - containerPort: 8080
@@ -41,9 +41,9 @@ spec:
             path: /var/run/docker.sock
         - name: data
           nfs:
-            server: 192.168.30.2
+            server: localhost
             path: /default/jenkins
         - name: kube
           nfs:
-            server: 192.168.30.2
+            server: localhost
             path: /default/kube

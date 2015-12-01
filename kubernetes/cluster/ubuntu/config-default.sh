@@ -53,7 +53,7 @@ ENABLE_CLUSTER_MONITORING="${KUBE_ENABLE_CLUSTER_MONITORING:-true}"
 
 # Extra options to set on the Docker command line.  This is useful for setting
 # --insecure-registry for local registries.
-DOCKER_OPTS=${DOCKER_OPTS:-""}
+DOCKER_OPTS=${DOCKER_OPTS:-"--insecure-registry registry.default.kube.cluster.local"}
 
 # Optional: Install cluster DNS.
 ENABLE_CLUSTER_DNS="${KUBE_ENABLE_CLUSTER_DNS:-true}"

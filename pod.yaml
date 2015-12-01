@@ -1,0 +1,14 @@
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  labels:
+    name: ping
+  name: ping
+
+spec:
+  containers:
+    - name: ping
+      image: "ubuntu"
+      command: ["/bin/sh", "-c", "ping ya.ru"]

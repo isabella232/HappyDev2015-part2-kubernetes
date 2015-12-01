@@ -7,6 +7,7 @@
   1. exec
   1. logs
 1. Controllers
+  1. Scale
 1. Services
   1. DNS service discovery
 1. Application

@@ -8,3 +8,4 @@ nginx:
     - /home/sevenbits/HappyDev:/happydev
   ports:
     - 80:80
+  restart: always

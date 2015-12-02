@@ -13,4 +13,4 @@ RUN gemirro update
 
 EXPOSE 2000
 
-CMD gemirro server --start &&  while :; do echo 'Hit CTRL+C'; sleep 100; done
+CMD gemirro server --start && tail -f /data/logs/access.log

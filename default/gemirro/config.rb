@@ -16,7 +16,7 @@ Gemirro.configuration.configure do
   # If you want to run your server on a specific host and port, you must
   # change the following parameters (server_host and server_port).
   #
-  # server.host 'localhost'
+  server.host '0.0.0.0'
   # server.port '2000'
   server.access_log File.expand_path('../logs/access.log', __FILE__)
   server.error_log File.expand_path('../logs/error.log', __FILE__)
@@ -24,6 +24,6 @@ Gemirro.configuration.configure do
   # You must define a source wich where gems will be downloaded.
   # All gem in the block will be downloaded with the update command.
   # Other gems will be downloaded with the server.
-  define_source 'rubygems', 'http://rubygems.org' do
+  define_source 'rubygems', 'https://rubygems.org' do
   end
 end

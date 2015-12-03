@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ReplicationController
+
+metadata:
+  labels:
+    name: db
+  name: db
+  namespace: nox73
+
+spec:
+  replicas: 1
+  selector:
+    name: db
+  template:
+    metadata:
+      labels:
+        name: db
+    spec:
+      containers:
+      - image: registry.default.kube.cluster.local/redis
+        name: db
+        ports:
+        - containerPort: 6379
+          protocol: TCP
+
+        volumeMounts:
+          - name: data
+            mountPath: /data
+
+      volumes:
+        - name: data
+          nfs:
+            server: localhost
+            path: /nox73/db
+
